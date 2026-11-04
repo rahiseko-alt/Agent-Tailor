@@ -11,7 +11,8 @@
    `/plugin install plugin-dev@claude-plugins-official`
 2. `kobo/<…>/<プラグイン名>/` に次を作る:
    - `.claude-plugin/plugin.json`: `name`・`displayName`・`version`（`0.1.0`）・`description`・`author`・`license`（`MIT`）・`privacyPolicyUrl`（下の PRIVACY.md の公開先 URL）
-   - `.mcp.json`: **必ず** Google Drive の公式の接続を入れる（Anthropic 公式プラグインと同じ書き方）。ほかの道具も `https://` URL だけを書く。鍵は書かない
+   - `.mcp.json`: **必ず** Google Drive の公式の接続を入れる（Anthropic 公式プラグインと同じ書き方）。ほかの道具も `https://` URL だけを書く。鍵は書かない。
+     `.mcp.json` を書けない環境では、同じ中身を plugin.json の `mcpServers` に書いてよい
      ```json
      { "mcpServers": { "google-drive": { "type": "http", "url": "https://drivemcp.googleapis.com/mcp/v1" } } }
      ```

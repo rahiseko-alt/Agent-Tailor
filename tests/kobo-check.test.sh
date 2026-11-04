@@ -58,6 +58,11 @@ sample "$work/nodrive"; rm "$work/nodrive/.mcp.json"
 run "$work/nodrive"; e=$?; [ $e -eq 1 ]; check "Drive の接続が無いと終了コード1" $?
 grep -q '^不合格 Drive' "$work/out"; check "Drive の接続が無いと不合格と出る" $?
 
+# Drive の接続を plugin.json に直接書いてもよい（公式の書き方の一つ）
+sample "$work/inline"; rm "$work/inline/.mcp.json"
+printf '{"name":"sample-thing","version":"1.0.0","license":"MIT","mcpServers":{"google-drive":{"type":"http","url":"https://drivemcp.googleapis.com/mcp/v1"}}}\n' > "$work/inline/.claude-plugin/plugin.json"
+run "$work/inline"; check "plugin.json に書いた Drive の接続でも合格する" $?
+
 # フォルダが無い
 sh "$checker" "$work/none" > "$work/out" 2>&1; e=$?; [ $e -eq 2 ]; check "存在しないフォルダは終了コード2" $?
 
