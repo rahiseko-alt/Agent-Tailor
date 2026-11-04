@@ -63,6 +63,56 @@ sample "$work/inline"; rm "$work/inline/.mcp.json"
 printf '{"name":"sample-thing","version":"1.0.0","license":"MIT","mcpServers":{"google-drive":{"type":"http","url":"https://drivemcp.googleapis.com/mcp/v1"}}}\n' > "$work/inline/.claude-plugin/plugin.json"
 run "$work/inline"; check "plugin.json に書いた Drive の接続でも合格する" $?
 
+# --- 仕上げの確認で見つかった見逃し・誤検知 ---
+expect_ng() { # $1 説明, $2 フォルダ, $3 不合格の見出し
+  run "$2"; e=$?; [ $e -eq 1 ] && grep -q "^不合格 $3" "$work/out"; check "$1" $?
+}
+expect_ok() { # $1 説明, $2 フォルダ
+  run "$2"; e=$?; [ $e -eq 0 ] || cat "$work/out"; check "$1" $e
+}
+drive='"google-drive":{"type":"http","url":"https://drivemcp.googleapis.com/mcp/v1"}'
+
+sample "$work/two"; printf '{"mcpServers":{%s,"a":{"command":"npx","args":["-y","good@1.2.3"]},"b":{"command":"npx","args":["-y","bad"]}}}\n' "$drive" > "$work/two/.mcp.json"
+expect_ng "2つ目の起動だけ版なしでも見逃さない" "$work/two" "版の固定"
+
+sample "$work/order"; printf '{"mcpServers":{%s,"a":{"args":["-y","bad"],"command":"npx"}}}\n' "$drive" > "$work/order/.mcp.json"
+expect_ng "args が command より前でも見逃さない" "$work/order" "版の固定"
+
+sample "$work/loose"; printf '{"mcpServers":{%s,"a":{"command":"npx","args":["pkg@1"]}}}\n' "$drive" > "$work/loose/.mcp.json"
+expect_ng "pkg@1 のような大まかな版は不合格" "$work/loose" "版の固定"
+
+sample "$work/dlx"; printf '{"mcpServers":{%s,"a":{"command":"pnpm","args":["dlx","pkg"]},"b":{"command":"pipx","args":["run","tool"]}}}\n' "$drive" > "$work/dlx/.mcp.json"
+expect_ng "pnpm dlx / pipx run の版なしも不合格" "$work/dlx" "版の固定"
+
+sample "$work/shell"; mkdir -p "$work/shell/scripts"; printf '#!/bin/sh\nnpx -y bad\n' > "$work/shell/scripts/run.sh"
+expect_ng "シェルの npx -y bad を見逃さない" "$work/shell" "版の固定"
+
+sample "$work/tab"; printf '{\n\t"mcpServers": {\n\t\t%s,\n\t\t"a": {\n\t\t\t"command": "npx",\n\t\t\t"args": ["-y", "good@1.2.3"]\n\t\t}\n\t}\n}\n' "$drive" > "$work/tab/.mcp.json"
+expect_ok "タブ字下げで版ありなら合格" "$work/tab"
+
+sample "$work/prose"; printf '{"name":"sample-thing","version":"1.0.0","license":"MIT","description":"Run it with npx later"}\n' > "$work/prose/.claude-plugin/plugin.json"
+mkdir -p "$work/prose/scripts"; printf '#!/bin/sh\n# npx で起動することもある\necho ok\n' > "$work/prose/scripts/a.sh"
+expect_ok "説明文やコメントの npx は不合格にしない" "$work/prose"
+
+sample "$work/xlsx"; printf 'PK\003\004\000\000binary' > "$work/xlsx/memo.xlsx"
+expect_ng "xlsx のような中を見られないファイルは不合格" "$work/xlsx" "種類"
+
+sample "$work/space"; mkdir -p "$work/space/references/顧客 資料"; printf 'PK\003\004\000\000binary' > "$work/space/references/顧客 資料/a b.docx"
+expect_ng "空白入りの名前のファイルも検査する" "$work/space" "種類"
+
+sample "$work/results"; mkdir -p "$work/results/evals/results/x"; head -c 300000 /dev/zero | tr '\0' a > "$work/results/evals/results/x/run.json"
+expect_ok "evals/results/ は大きさの検査に数えない" "$work/results"
+
+sample "$work/fake"; printf '{"mcpServers":{"other":{"type":"http","url":"https://example.com/mcp","note":"https://drivemcp.googleapis.com/mcp/v1"}}}\n' > "$work/fake/.mcp.json"
+expect_ng "Drive の URL が注記にあるだけなら不合格" "$work/fake" "Drive"
+
+sample "$work/off"; printf '{"mcpServers":{"google-drive":{"type":"http","url":"https://drivemcp.googleapis.com/mcp/v1","disabled":true}}}\n' > "$work/off/.mcp.json"
+expect_ng "無効にした Drive の接続は不合格" "$work/off" "Drive"
+
+sample "$work/ref"; rm "$work/ref/.mcp.json"; printf '{"mcpServers":{%s}}\n' "$drive" > "$work/ref/servers.json"
+printf '{"name":"sample-thing","version":"1.0.0","license":"MIT","mcpServers":"./servers.json"}\n' > "$work/ref/.claude-plugin/plugin.json"
+expect_ok "plugin.json が別ファイルを指す Drive の接続も合格" "$work/ref"
+
 # フォルダが無い
 sh "$checker" "$work/none" > "$work/out" 2>&1; e=$?; [ $e -eq 2 ]; check "存在しないフォルダは終了コード2" $?
 

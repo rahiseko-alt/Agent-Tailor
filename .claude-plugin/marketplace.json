@@ -1,7 +1,7 @@
 {
   "name": "rahiseko-tailor",
   "owner": { "name": "rahiseko-alt" },
-  "description": "Agent Tailor と、それで作ったプラグインの置き場所",
+  "description": "Agent Tailor の目録。顧客向けのエージェントは顧客ごとの非公開の目録で納品する",
   "allowCrossMarketplaceDependenciesOn": ["claude-plugins-official"],
   "plugins": [
     {
