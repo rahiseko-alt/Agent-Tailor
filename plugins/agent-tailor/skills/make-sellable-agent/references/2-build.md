@@ -7,8 +7,9 @@
 1. 公式の作り方を読み込む: `plugin-dev:plugin-structure` と `plugin-dev:skill-development` の2つのスキルを呼ぶ。
    Google Drive は必ずつなぐので、`plugin-dev:mcp-integration` も呼ぶ。
    `/plugin-dev:create-plugin` は呼ばない（質問が二重になり、後半の段階と重なるため）。
-   plugin-dev が入っていなければ、利用者に次の1行を打つよう案内して止まる:
-   `/plugin install plugin-dev@claude-plugins-official`
+   plugin-dev が入っていない（クラウド上の会話など）ときは、止まらずに公式の置き場所から同じ手順書を読む:
+   `https://raw.githubusercontent.com/anthropics/claude-plugins-official/main/plugins/plugin-dev/skills/<plugin-structure|skill-development|mcp-integration>/SKILL.md`
+   （利用者のパソコンでは `/plugin install plugin-dev@claude-plugins-official` で入れておくと速い）
 2. `tailor/<…>/<プラグイン名>/` に次を作る:
    - `.claude-plugin/plugin.json`: `name`・`displayName`・`version`（`0.1.0`）・`description`・`author`・`license`（`MIT`）・`privacyPolicyUrl`（spec.md の「プライバシーポリシーの URL」）・`repository`
    - `.mcp.json`: **必ず** Google Drive の公式の接続を入れる（Anthropic 公式プラグインと同じ書き方）。ほかの道具も `https://` URL だけを書く。鍵は書かない。
