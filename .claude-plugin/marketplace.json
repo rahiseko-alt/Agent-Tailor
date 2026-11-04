@@ -1,16 +1,28 @@
 {
   "name": "rahiseko-tailor",
-  "owner": { "name": "rahiseko-alt" },
-  "description": "Agent Tailor の目録。顧客向けのエージェントは顧客ごとの非公開の目録で納品する",
-  "allowCrossMarketplaceDependenciesOn": ["claude-plugins-official"],
+  "owner": {
+    "name": "rahiseko-alt"
+  },
+  "description": "Agent Tailor と、それで仕立てたエージェントの目録",
+  "allowCrossMarketplaceDependenciesOn": [
+    "claude-plugins-official"
+  ],
   "plugins": [
     {
       "name": "agent-tailor",
       "source": "./plugins/agent-tailor",
       "description": "顧客に納品できるプラグイン（エージェント）を作るエージェント",
       "dependencies": [
-        { "name": "plugin-dev", "marketplace": "claude-plugins-official" }
+        {
+          "name": "plugin-dev",
+          "marketplace": "claude-plugins-official"
+        }
       ]
+    },
+    {
+      "name": "kaiho-visit-followup",
+      "source": "./plugins/kaiho-visit-followup",
+      "description": "海鵬学園 AIビジネス専門学校の高校訪問担当向け。訪問メモから上司向け報告書と先生宛てお礼メールの下書きを作る"
     }
   ]
 }
