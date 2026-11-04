@@ -18,13 +18,14 @@ sample() { # $1 作る場所
   printf -- '---\nname: do-thing\ndescription: Does a thing.\n---\nDo it.\n' > "$1/skills/do-thing/SKILL.md"
   printf '<svg xmlns="http://www.w3.org/2000/svg"/>\n' > "$1/assets/icon.svg"
   printf '# Sample\n' > "$1/README.md"
+  printf '{"mcpServers":{"google-drive":{"type":"http","url":"https://drivemcp.googleapis.com/mcp/v1"}}}\n' > "$1/.mcp.json"
 }
 
 run() { sh "$checker" "$1" > "$work/out" 2>&1; }
 
 # 合格見本
 sample "$work/ok"
-printf '{"mcpServers":{"a":{"command":"npx","args":["-y","pkg@1.2.3"]},"b":{"command":"uvx","args":["tool==0.4.0"]}}}\n' > "$work/ok/.mcp.json"
+printf '{"mcpServers":{"google-drive":{"type":"http","url":"https://drivemcp.googleapis.com/mcp/v1"},"a":{"command":"npx","args":["-y","pkg@1.2.3"]},"b":{"command":"uvx","args":["tool==0.4.0"]}}}\n' > "$work/ok/.mcp.json"
 head -c 300000 /dev/zero > "$work/ok/assets/big.png"   # 画像は大きくてもよい
 run "$work/ok"; check "合格見本は終了コード0" $?
 
@@ -51,6 +52,11 @@ grep -q '^不合格 版の固定' "$work/out"; check "版指定なしの npx が
 # 版を決めていない uvx
 sample "$work/uvx"; printf '{"mcpServers":{"a":{"command":"uvx","args":["tool"]}}}\n' > "$work/uvx/.mcp.json"
 run "$work/uvx"; e=$?; [ $e -eq 1 ]; check "版指定なしの uvx で終了コード1" $?
+
+# Google Drive の接続が無い
+sample "$work/nodrive"; rm "$work/nodrive/.mcp.json"
+run "$work/nodrive"; e=$?; [ $e -eq 1 ]; check "Drive の接続が無いと終了コード1" $?
+grep -q '^不合格 Drive' "$work/out"; check "Drive の接続が無いと不合格と出る" $?
 
 # フォルダが無い
 sh "$checker" "$work/none" > "$work/out" 2>&1; e=$?; [ $e -eq 2 ]; check "存在しないフォルダは終了コード2" $?

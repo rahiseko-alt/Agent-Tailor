@@ -61,4 +61,12 @@ else
   pass "版の固定: パッケージの起動はすべて版が決まっています"
 fi
 
+# 5. 利用者の Google Drive につながっている（工房が作るエージェントの標準。利用者の決まり）
+#    公式の接続先: https://drivemcp.googleapis.com/mcp/v1 （anthropics/knowledge-work-plugins と同じ）
+if [ -f "$dir/.mcp.json" ] && grep -q 'https://drivemcp.googleapis.com/mcp/v1' "$dir/.mcp.json"; then
+  pass "Drive: Google Drive につながっています"
+else
+  ng "Drive: .mcp.json に Google Drive の接続（https://drivemcp.googleapis.com/mcp/v1）を入れてください"
+fi
+
 exit $bad

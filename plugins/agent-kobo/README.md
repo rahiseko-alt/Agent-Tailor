@@ -21,4 +21,4 @@ Ask in Claude Code, for example: 「〇〇さん向けに、毎週の売上報�
 
 ## Data
 
-Agent Kobo sends nothing anywhere by itself. It reads and writes files only in your working folder, and runs the `claude` command on your machine for evaluation and checks, which uses your own Claude account.
+Agent Kobo sends nothing anywhere by itself. It reads and writes files only in your working folder, reads your own Google Drive through Google's official connector (sign in once from Claude's connector settings), and runs the `claude` command on your machine for evaluation and checks, which uses your own Claude account. Every agent it builds is connected to your Google Drive by default. See [Privacy](PRIVACY.md).
