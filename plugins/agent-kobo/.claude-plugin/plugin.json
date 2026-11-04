@@ -1,0 +1,11 @@
+{
+  "name": "agent-kobo",
+  "displayName": "Agent Kobo（エージェント工房）",
+  "version": "0.1.0",
+  "description": "顧客の仕事を聞き取り、公式の作り方で顧客に納品できるプラグイン（エージェント）を作り、出来を測り、申請前の検査に通して納品形にまとめる。",
+  "author": { "name": "rahiseko-alt", "url": "https://github.com/rahiseko-alt" },
+  "repository": "https://github.com/rahiseko-alt/Dev-agent-01",
+  "license": "MIT",
+  "keywords": ["plugin-builder", "agent-builder", "evals"],
+  "icon": "./assets/icon.svg"
+}

@@ -58,5 +58,17 @@ sh "$checker" "$work/none" > "$work/out" 2>&1; e=$?; [ $e -eq 2 ]; check "存在
 # agent-kobo 自身が合格する
 run "$root/plugins/agent-kobo"; check "agent-kobo 自身が合格する" $?
 
+# 公式の検査（claude が入っているときだけ）
+if command -v claude >/dev/null 2>&1; then
+  claude plugin validate --profile directory --strict "$root/plugins/agent-kobo" > "$work/out" 2>&1
+  e=$?; [ $e -eq 0 ] || cat "$work/out"; check "agent-kobo が公式の検査に合格する" $e
+  claude plugin validate --strict "$root" > "$work/out" 2>&1
+  e=$?; [ $e -eq 0 ] || cat "$work/out"; check "配布用の置き場所定義が公式の検査に合格する" $e
+  grep -q '"allowCrossMarketplaceDependenciesOn"' "$root/.claude-plugin/marketplace.json"
+  check "別の置き場所への依存を許可している" $?
+else
+  echo "skip 公式の検査（claude が見つかりません）"
+fi
+
 [ $fail -eq 0 ] && echo "すべて合格" || echo "不合格あり"
 exit $fail
