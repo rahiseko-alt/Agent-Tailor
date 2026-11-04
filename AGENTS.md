@@ -18,6 +18,8 @@ While working on the template itself (`.template/` exists), the template's own g
 
 This repo may be driven by a non-engineer. Never assume the user knows which slash command to run.
 
+- **Research best practices first.** Before proposing a direction, recommending an option, or asking the user to decide, research how established companies and the tool vendors (e.g. Anthropic) actually do it, and cite direct links. Never recommend from your own assumption. (User's standing instruction.)
+
 - The `next-step` skill (`.claude/skills/next-step/`, repo-local, not from mattpocock/skills) diagnoses where the work currently stands and proposes exactly one command to run next.
 - A `SessionStart` hook in `.claude/settings.json` loads `docs/agents/flow-map.md` into context at the start of every session.
 - Before writing implementation code for a request that has not been through the flow, run `next-step` first. Skip it only if the user explicitly says to go straight to code.
