@@ -49,4 +49,5 @@ sh ${CLAUDE_SKILL_DIR}/scripts/check-extra.sh <プラグインのフォルダ>
 - 名前に `claude`・`anthropic`・`official`・`plugin`・`test` を単独で使わない。顧客や仕事に固有の名前にする。
 - 最上位に `bin/` を作らない（claude.ai と Cowork で入らなくなる）。
 - 作るエージェントは**すべて、標準で利用者の Google Drive につなぐ**（利用者の決まり）。Agent Tailor 自身も、聞き取りで Drive の資料を探す。
+- 道具は**公式の接続口（MCP）を先に使い、無いときだけ画面操作**（Claude in Chrome、デスクトップの computer use）で行う（利用者の決まり。Anthropic の案内と同じ順番）。画面操作でも、送信・確定・削除・共有など取り消せない操作の前は、必ず利用者に確かめる。
 - 顧客の Drive の資料の本文は、作るプラグインに写さない。プラグインは使うたびに Drive から読む。評価の入力に要る分だけ抜き出し、個人名・連絡先は伏せる。
