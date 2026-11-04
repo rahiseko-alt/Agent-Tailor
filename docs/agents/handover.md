@@ -8,6 +8,24 @@
 
 ---
 
+## 2026-11-04 Agent Tailor を本流へ取り込み・次は授業アシスタント
+
+**決めたこと**
+
+- 最終確認 GO。PR #6 を本流へ取り込み、issue #1 を閉じた。入れ方は `/plugin install agent-tailor --marketplace rahiseko-alt/Dev-agent-01`
+- 次のエージェントは、利用者の授業（Classroom・Drive・Google フォーム・NotebookLM・messenger）を手伝うもの。1つのエージェントに部品を1つずつ足していく
+- Google 公式の接続口は Drive・Docs・Sheets・Slides・Classroom・Chat（試験提供中。試験提供の会員登録・Google Cloud の設定・Claude への接続登録が要る）。フォームと NotebookLM には公式の接続口が無い
+
+**次にやること**
+
+- Agent Tailor の聞き取りの続き: Q1 使う人（推奨: 利用者本人の先生）、Q2 最初の仕事（推奨: 課題の採点→集計）、Q3 messenger がどれか
+- 利用者の Drive の授業フォルダ（1ft7WKZ5ZFM819gWhwKKoyz2GS9JClzoF）のシラバスと成績表を実例に使う
+
+**未解決の問題**
+
+- Classroom などの公式接続口の準備を私が代わりにできるかは未確認
+- 置き場所は公開のまま（利用者がいずれ非公開にする）。他社の道具による確認は後回し（issue #2）
+
 ## 2026-11-04 高校訪問フォローを目録に追加・仕上げの確認を反映
 
 **決めたこと**
