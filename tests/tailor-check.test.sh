@@ -1,0 +1,135 @@
+#!/bin/sh
+# agent-tailor の自作検査の検査。手で流す: sh tests/tailor-check.test.sh
+# 合格見本1つと、項目ごとに1つずつ落ちる見本を作り、検査スクリプトに渡す。
+set -u
+root=$(cd "$(dirname "$0")/.." && pwd)
+checker="$root/plugins/agent-tailor/skills/make-sellable-agent/scripts/check-extra.sh"
+fail=0
+work=$(mktemp -d)
+trap 'rm -rf "$work"' EXIT
+
+check() { # $1 説明, $2 条件の終了コード
+  if [ "$2" -eq 0 ]; then echo "ok   $1"; else echo "FAIL $1"; fail=1; fi
+}
+
+sample() { # $1 作る場所
+  mkdir -p "$1/.claude-plugin" "$1/skills/do-thing" "$1/assets"
+  printf '{"name":"sample-thing","version":"1.0.0","license":"MIT"}\n' > "$1/.claude-plugin/plugin.json"
+  printf -- '---\nname: do-thing\ndescription: Does a thing.\n---\nDo it.\n' > "$1/skills/do-thing/SKILL.md"
+  printf '<svg xmlns="http://www.w3.org/2000/svg"/>\n' > "$1/assets/icon.svg"
+  printf '# Sample\n' > "$1/README.md"
+  printf '{"mcpServers":{"google-drive":{"type":"http","url":"https://drivemcp.googleapis.com/mcp/v1"}}}\n' > "$1/.mcp.json"
+}
+
+run() { sh "$checker" "$1" > "$work/out" 2>&1; }
+
+# 合格見本
+sample "$work/ok"
+printf '{"mcpServers":{"google-drive":{"type":"http","url":"https://drivemcp.googleapis.com/mcp/v1"},"a":{"command":"npx","args":["-y","pkg@1.2.3"]},"b":{"command":"uvx","args":["tool==0.4.0"]}}}\n' > "$work/ok/.mcp.json"
+head -c 300000 /dev/zero > "$work/ok/assets/big.png"   # 画像は大きくてもよい
+run "$work/ok"; check "合格見本は終了コード0" $?
+
+# bin/ がある
+sample "$work/bin"; mkdir "$work/bin/bin"; printf '#!/bin/sh\n' > "$work/bin/bin/tool"
+run "$work/bin"; e=$?; [ $e -eq 1 ]; check "bin/ があると終了コード1" $?
+grep -q '^不合格 bin' "$work/out"; check "bin/ が不合格と出る" $?
+
+# 256KiB を超える文字ファイル
+sample "$work/big"; head -c 300000 /dev/zero | tr '\0' a > "$work/big/data.txt"
+run "$work/big"; e=$?; [ $e -eq 1 ]; check "大きすぎるファイルで終了コード1" $?
+grep -q '^不合格 大きさ' "$work/out"; check "大きすぎるファイルが不合格と出る" $?
+
+# 中を確かめられない種類のファイル
+sample "$work/zip"; printf 'PK' > "$work/zip/extra.zip"
+run "$work/zip"; e=$?; [ $e -eq 1 ]; check "zip があると終了コード1" $?
+grep -q '^不合格 種類' "$work/out"; check "zip が不合格と出る" $?
+
+# 版を決めていない npx
+sample "$work/npx"; printf '{"mcpServers":{"a":{"command":"npx","args":["-y","pkg"]}}}\n' > "$work/npx/.mcp.json"
+run "$work/npx"; e=$?; [ $e -eq 1 ]; check "版指定なしの npx で終了コード1" $?
+grep -q '^不合格 版の固定' "$work/out"; check "版指定なしの npx が不合格と出る" $?
+
+# 版を決めていない uvx
+sample "$work/uvx"; printf '{"mcpServers":{"a":{"command":"uvx","args":["tool"]}}}\n' > "$work/uvx/.mcp.json"
+run "$work/uvx"; e=$?; [ $e -eq 1 ]; check "版指定なしの uvx で終了コード1" $?
+
+# Google Drive の接続が無い
+sample "$work/nodrive"; rm "$work/nodrive/.mcp.json"
+run "$work/nodrive"; e=$?; [ $e -eq 1 ]; check "Drive の接続が無いと終了コード1" $?
+grep -q '^不合格 Drive' "$work/out"; check "Drive の接続が無いと不合格と出る" $?
+
+# Drive の接続を plugin.json に直接書いてもよい（公式の書き方の一つ）
+sample "$work/inline"; rm "$work/inline/.mcp.json"
+printf '{"name":"sample-thing","version":"1.0.0","license":"MIT","mcpServers":{"google-drive":{"type":"http","url":"https://drivemcp.googleapis.com/mcp/v1"}}}\n' > "$work/inline/.claude-plugin/plugin.json"
+run "$work/inline"; check "plugin.json に書いた Drive の接続でも合格する" $?
+
+# --- 仕上げの確認で見つかった見逃し・誤検知 ---
+expect_ng() { # $1 説明, $2 フォルダ, $3 不合格の見出し
+  run "$2"; e=$?; [ $e -eq 1 ] && grep -q "^不合格 $3" "$work/out"; check "$1" $?
+}
+expect_ok() { # $1 説明, $2 フォルダ
+  run "$2"; e=$?; [ $e -eq 0 ] || cat "$work/out"; check "$1" $e
+}
+drive='"google-drive":{"type":"http","url":"https://drivemcp.googleapis.com/mcp/v1"}'
+
+sample "$work/two"; printf '{"mcpServers":{%s,"a":{"command":"npx","args":["-y","good@1.2.3"]},"b":{"command":"npx","args":["-y","bad"]}}}\n' "$drive" > "$work/two/.mcp.json"
+expect_ng "2つ目の起動だけ版なしでも見逃さない" "$work/two" "版の固定"
+
+sample "$work/order"; printf '{"mcpServers":{%s,"a":{"args":["-y","bad"],"command":"npx"}}}\n' "$drive" > "$work/order/.mcp.json"
+expect_ng "args が command より前でも見逃さない" "$work/order" "版の固定"
+
+sample "$work/loose"; printf '{"mcpServers":{%s,"a":{"command":"npx","args":["pkg@1"]}}}\n' "$drive" > "$work/loose/.mcp.json"
+expect_ng "pkg@1 のような大まかな版は不合格" "$work/loose" "版の固定"
+
+sample "$work/dlx"; printf '{"mcpServers":{%s,"a":{"command":"pnpm","args":["dlx","pkg"]},"b":{"command":"pipx","args":["run","tool"]}}}\n' "$drive" > "$work/dlx/.mcp.json"
+expect_ng "pnpm dlx / pipx run の版なしも不合格" "$work/dlx" "版の固定"
+
+sample "$work/shell"; mkdir -p "$work/shell/scripts"; printf '#!/bin/sh\nnpx -y bad\n' > "$work/shell/scripts/run.sh"
+expect_ng "シェルの npx -y bad を見逃さない" "$work/shell" "版の固定"
+
+sample "$work/tab"; printf '{\n\t"mcpServers": {\n\t\t%s,\n\t\t"a": {\n\t\t\t"command": "npx",\n\t\t\t"args": ["-y", "good@1.2.3"]\n\t\t}\n\t}\n}\n' "$drive" > "$work/tab/.mcp.json"
+expect_ok "タブ字下げで版ありなら合格" "$work/tab"
+
+sample "$work/prose"; printf '{"name":"sample-thing","version":"1.0.0","license":"MIT","description":"Run it with npx later"}\n' > "$work/prose/.claude-plugin/plugin.json"
+mkdir -p "$work/prose/scripts"; printf '#!/bin/sh\n# npx で起動することもある\necho ok\n' > "$work/prose/scripts/a.sh"
+expect_ok "説明文やコメントの npx は不合格にしない" "$work/prose"
+
+sample "$work/xlsx"; printf 'PK\003\004\000\000binary' > "$work/xlsx/memo.xlsx"
+expect_ng "xlsx のような中を見られないファイルは不合格" "$work/xlsx" "種類"
+
+sample "$work/space"; mkdir -p "$work/space/references/顧客 資料"; printf 'PK\003\004\000\000binary' > "$work/space/references/顧客 資料/a b.docx"
+expect_ng "空白入りの名前のファイルも検査する" "$work/space" "種類"
+
+sample "$work/results"; mkdir -p "$work/results/evals/results/x"; head -c 300000 /dev/zero | tr '\0' a > "$work/results/evals/results/x/run.json"
+expect_ok "evals/results/ は大きさの検査に数えない" "$work/results"
+
+sample "$work/fake"; printf '{"mcpServers":{"other":{"type":"http","url":"https://example.com/mcp","note":"https://drivemcp.googleapis.com/mcp/v1"}}}\n' > "$work/fake/.mcp.json"
+expect_ng "Drive の URL が注記にあるだけなら不合格" "$work/fake" "Drive"
+
+sample "$work/off"; printf '{"mcpServers":{"google-drive":{"type":"http","url":"https://drivemcp.googleapis.com/mcp/v1","disabled":true}}}\n' > "$work/off/.mcp.json"
+expect_ng "無効にした Drive の接続は不合格" "$work/off" "Drive"
+
+sample "$work/ref"; rm "$work/ref/.mcp.json"; printf '{"mcpServers":{%s}}\n' "$drive" > "$work/ref/servers.json"
+printf '{"name":"sample-thing","version":"1.0.0","license":"MIT","mcpServers":"./servers.json"}\n' > "$work/ref/.claude-plugin/plugin.json"
+expect_ok "plugin.json が別ファイルを指す Drive の接続も合格" "$work/ref"
+
+# フォルダが無い
+sh "$checker" "$work/none" > "$work/out" 2>&1; e=$?; [ $e -eq 2 ]; check "存在しないフォルダは終了コード2" $?
+
+# agent-tailor 自身が合格する
+run "$root/plugins/agent-tailor"; check "agent-tailor 自身が合格する" $?
+
+# 公式の検査（claude が入っているときだけ）
+if command -v claude >/dev/null 2>&1; then
+  claude plugin validate --profile directory --strict "$root/plugins/agent-tailor" > "$work/out" 2>&1
+  e=$?; [ $e -eq 0 ] || cat "$work/out"; check "agent-tailor が公式の検査に合格する" $e
+  claude plugin validate --strict "$root" > "$work/out" 2>&1
+  e=$?; [ $e -eq 0 ] || cat "$work/out"; check "配布用の置き場所定義が公式の検査に合格する" $e
+  grep -q '"allowCrossMarketplaceDependenciesOn"' "$root/.claude-plugin/marketplace.json"
+  check "別の置き場所への依存を許可している" $?
+else
+  echo "skip 公式の検査（claude が見つかりません）"
+fi
+
+[ $fail -eq 0 ] && echo "すべて合格" || echo "不合格あり"
+exit $fail
