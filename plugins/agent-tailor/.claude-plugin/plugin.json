@@ -1,6 +1,6 @@
 {
-  "name": "agent-kobo",
-  "displayName": "Agent Kobo（エージェント工房）",
+  "name": "agent-tailor",
+  "displayName": "Agent Tailor（エージェント・テイラー）",
   "version": "0.2.0",
   "description": "顧客の仕事を聞き取り、公式の作り方で顧客に納品できるプラグイン（エージェント）を作り、出来を測り、申請前の検査に通して納品形にまとめる。",
   "author": {
@@ -15,5 +15,5 @@
     "evals"
   ],
   "icon": "./assets/icon.svg",
-  "privacyPolicyUrl": "https://github.com/rahiseko-alt/Dev-agent-01/blob/main/plugins/agent-kobo/PRIVACY.md"
+  "privacyPolicyUrl": "https://github.com/rahiseko-alt/Dev-agent-01/blob/main/plugins/agent-tailor/PRIVACY.md"
 }

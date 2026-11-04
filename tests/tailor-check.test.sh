@@ -1,9 +1,9 @@
 #!/bin/sh
-# agent-kobo の自作検査の検査。手で流す: sh tests/kobo-check.test.sh
+# agent-tailor の自作検査の検査。手で流す: sh tests/tailor-check.test.sh
 # 合格見本1つと、項目ごとに1つずつ落ちる見本を作り、検査スクリプトに渡す。
 set -u
 root=$(cd "$(dirname "$0")/.." && pwd)
-checker="$root/plugins/agent-kobo/skills/make-sellable-agent/scripts/check-extra.sh"
+checker="$root/plugins/agent-tailor/skills/make-sellable-agent/scripts/check-extra.sh"
 fail=0
 work=$(mktemp -d)
 trap 'rm -rf "$work"' EXIT
@@ -66,13 +66,13 @@ run "$work/inline"; check "plugin.json に書いた Drive の接続でも合格�
 # フォルダが無い
 sh "$checker" "$work/none" > "$work/out" 2>&1; e=$?; [ $e -eq 2 ]; check "存在しないフォルダは終了コード2" $?
 
-# agent-kobo 自身が合格する
-run "$root/plugins/agent-kobo"; check "agent-kobo 自身が合格する" $?
+# agent-tailor 自身が合格する
+run "$root/plugins/agent-tailor"; check "agent-tailor 自身が合格する" $?
 
 # 公式の検査（claude が入っているときだけ）
 if command -v claude >/dev/null 2>&1; then
-  claude plugin validate --profile directory --strict "$root/plugins/agent-kobo" > "$work/out" 2>&1
-  e=$?; [ $e -eq 0 ] || cat "$work/out"; check "agent-kobo が公式の検査に合格する" $e
+  claude plugin validate --profile directory --strict "$root/plugins/agent-tailor" > "$work/out" 2>&1
+  e=$?; [ $e -eq 0 ] || cat "$work/out"; check "agent-tailor が公式の検査に合格する" $e
   claude plugin validate --strict "$root" > "$work/out" 2>&1
   e=$?; [ $e -eq 0 ] || cat "$work/out"; check "配布用の置き場所定義が公式の検査に合格する" $e
   grep -q '"allowCrossMarketplaceDependenciesOn"' "$root/.claude-plugin/marketplace.json"

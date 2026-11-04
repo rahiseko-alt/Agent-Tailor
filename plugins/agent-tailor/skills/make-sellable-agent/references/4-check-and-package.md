@@ -18,7 +18,7 @@ sh ${CLAUDE_SKILL_DIR}/scripts/check-extra.sh <プラグインのフォルダ>
 1. 版番号を確かめる（plugin.json の `version`）。置き場所が git なら `claude plugin tag --dry-run` で印の名前を確かめ、利用者が望めば `claude plugin tag --push`。
 2. claude.ai に上げる圧縮ファイルを作る（プラグインのフォルダ1つを最上位に入れる。`evals/results/` は入れない）:
    ```
-   cd kobo/<…> && zip -r <プラグイン名>-<版>.zip <プラグイン名> -x '*/evals/results/*' '*/.DS_Store'
+   cd tailor/<…> && zip -r <プラグイン名>-<版>.zip <プラグイン名> -x '*/evals/results/*' '*/.DS_Store'
    ```
 3. README に「claude.ai では Customize > Plugins > Add > Upload plugin からこの zip を選ぶ」と書いてあるか確かめる。
 
@@ -28,7 +28,7 @@ sh ${CLAUDE_SKILL_DIR}/scripts/check-extra.sh <プラグインのフォルダ>
 できたもの: <プラグイン名>（<何をするか>）
 出来: プラグイン有りで◯点、無しで◯点
 検査: 公式の検査と追加の検査に合格
-渡すもの: kobo/<…>/<プラグイン名>/ と <プラグイン名>-<版>.zip
+渡すもの: tailor/<…>/<プラグイン名>/ と <プラグイン名>-<版>.zip
 ```
 
 progress.md に段階4の完了と「次にやること: なし（納品済み）」を書く。

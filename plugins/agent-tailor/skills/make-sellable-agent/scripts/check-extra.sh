@@ -61,7 +61,7 @@ else
   pass "版の固定: パッケージの起動はすべて版が決まっています"
 fi
 
-# 5. 利用者の Google Drive につながっている（工房が作るエージェントの標準。利用者の決まり）
+# 5. 利用者の Google Drive につながっている（Agent Tailor が作るエージェントの標準。利用者の決まり）
 #    公式の接続先: https://drivemcp.googleapis.com/mcp/v1 （anthropics/knowledge-work-plugins と同じ）
 #    .mcp.json と plugin.json の mcpServers のどちらに書いてもよい（manifest reference の書き方）
 if grep -qs 'https://drivemcp.googleapis.com/mcp/v1' "$dir/.mcp.json" "$dir/.claude-plugin/plugin.json"; then

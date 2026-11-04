@@ -9,10 +9,10 @@ description: Builds a Claude plugin (agent) that can be delivered to a customer,
 
 ## 作業フォルダと進捗記録
 
-作るエージェントごとに、利用者の作業場所に `kobo/<顧客名>-<仕事名>/` を作る（英小文字・数字・ハイフン）。
+作るエージェントごとに、利用者の作業場所に `tailor/<顧客名>-<仕事名>/` を作る（英小文字・数字・ハイフン）。
 中身は `spec.md`（仕様メモ）、`progress.md`（進捗記録）、`<プラグイン名>/`（作ったプラグイン）。
 
-**最初に必ず** `kobo/*/progress.md` を探す。同じ顧客・仕事のものがあれば、その記録の「次にやること」から再開し、
+**最初に必ず** `tailor/*/progress.md` を探す。同じ顧客・仕事のものがあれば、その記録の「次にやること」から再開し、
 済んだ段階はやり直さない。無ければ新しく作る。各段階が終わるたびに `progress.md` に次を追記する:
 
 ```
@@ -39,4 +39,4 @@ description: Builds a Claude plugin (agent) that can be delivered to a customer,
 - パスワード・鍵・トークンはどのファイルにも書かない。必要なら plugin.json の `userConfig` に `sensitive: true` で聞く形にする。
 - 名前に `claude`・`anthropic`・`official`・`plugin`・`test` を単独で使わない。顧客や仕事に固有の名前にする。
 - 最上位に `bin/` を作らない（claude.ai と Cowork で入らなくなる）。
-- 作るエージェントは**すべて、標準で利用者の Google Drive につなぐ**（利用者の決まり）。工房自身も、聞き取りの前に Drive で資料を探す。
+- 作るエージェントは**すべて、標準で利用者の Google Drive につなぐ**（利用者の決まり）。Agent Tailor 自身も、聞き取りの前に Drive で資料を探す。

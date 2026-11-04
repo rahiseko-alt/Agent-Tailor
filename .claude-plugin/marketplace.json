@@ -1,12 +1,12 @@
 {
-  "name": "rahiseko-kobo",
+  "name": "rahiseko-tailor",
   "owner": { "name": "rahiseko-alt" },
-  "description": "Agent Kobo と、それで作ったプラグインの置き場所",
+  "description": "Agent Tailor と、それで作ったプラグインの置き場所",
   "allowCrossMarketplaceDependenciesOn": ["claude-plugins-official"],
   "plugins": [
     {
-      "name": "agent-kobo",
-      "source": "./plugins/agent-kobo",
+      "name": "agent-tailor",
+      "source": "./plugins/agent-tailor",
       "description": "顧客に納品できるプラグイン（エージェント）を作るエージェント",
       "dependencies": [
         { "name": "plugin-dev", "marketplace": "claude-plugins-official" }
