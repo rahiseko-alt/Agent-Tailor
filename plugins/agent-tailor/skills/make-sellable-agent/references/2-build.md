@@ -18,6 +18,7 @@
      ```
    - `skills/<動詞-ing などの名前>/SKILL.md`: 1つで始める。`description` は三人称で「何をするか」と「どんな場面で使うか」を、顧客が実際に言いそうな言葉で書く。本文は短く（500行未満）、手順は番号付き、確認して直す工程を入れる。spec.md の「良い結果の基準」を本文に入れる。
      本文の最初の手順に「Google Drive で、仕事に関係する資料（spec.md の『Drive で使う資料』）を探して読む。つながっていなければ貼り付けた資料で進める」を入れる。Drive のファイルを共有・移動・削除する操作は、利用者に確かめてからにする
+   - 公式の接続口が無い道具（例: Google フォーム、NotebookLM）を使う仕事は、SKILL.md の本文に「Claude in Chrome（無ければデスクトップの computer use）で画面を操作する」と書き、操作する画面と手順を番号付きで書く。README には「Claude in Chrome を入れておくこと」を書く。送信・確定・削除・共有の前は利用者に確かめる手順を入れる
    - 詳しい手順・書き方の見本は同じスキルの `references/` に分け、本文から直接たどれるようにする（1段まで）。顧客の Drive の資料の本文は写さない（使うたびに Drive から読む）
    - `README.md`: 40語以上。何をするか・使い方・Google Drive への接続のしかた（Claude の接続設定でサインイン）・どんなデータをどこへ送るか・入れ方の1行 `/plugin install <プラグイン名> --marketplace <spec.md の納品先の目録>`・Privacy の項（PRIVACY.md へのリンク）
    - `PRIVACY.md`: 自分では何も集めず送らないこと、Google Drive を読むこと（Google のプライバシーポリシー https://policies.google.com/privacy ）を書く
