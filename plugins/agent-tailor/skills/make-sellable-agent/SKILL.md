@@ -51,6 +51,7 @@ sh ${CLAUDE_SKILL_DIR}/scripts/check-extra.sh <プラグインのフォルダ>
 ## 守ること
 
 - 土台は Anthropic 公式のもの（plugin-dev の手順書、`claude plugin eval`、`claude plugin validate`、`claude plugin tag`）を使う。同じことを自作しない。
+- **作る前に、使える既存の部品を必ず探してフル装備にする**（利用者の決まり）。公式のプラグインと接続口（Anthropic・各サービスの公式）を最初に探し、次に MIT ライセンスの OSS（GitHub・npm・PyPI）とプラグインを探す。ライセンスは LICENSE ファイルか置き場所の表示で確かめ、確かめられないものは使わない。Apache-2.0・BSD は印を付けて使ってよい。GPL・AGPL は同梱せず、外から呼ぶだけにする。見つけた部品と採否の理由は spec.md の「使う部品」に書く。何も無い部分だけを自作し、その理由も書く。
 - パスワード・鍵・トークンはどのファイルにも書かない。必要なら plugin.json の `userConfig` に `sensitive: true` で聞く形にする。
 - 名前に `claude`・`anthropic`・`official`・`plugin`・`test` を単独で使わない。顧客や仕事に固有の名前にする。
 - 最上位に `bin/` を作らない（claude.ai と Cowork で入らなくなる）。
