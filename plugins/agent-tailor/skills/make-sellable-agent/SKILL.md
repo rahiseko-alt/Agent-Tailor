@@ -1,6 +1,6 @@
 ---
 name: make-sellable-agent
-description: Builds a Claude plugin (agent) tailored to one customer's job, from interview to a checked, packaged release, connected to the user's Google Drive by default. Use when the user asks to make, build, or sell an agent or plugin for a customer or a specific job (for example 「〇〇さん向けのエージェントを作って」「〇〇のサポートエージェントを作れ」), or asks to resume building one.
+description: Builds a Claude plugin (agent) tailored to one customer's job, from interview to a checked, packaged release, connected to the user's Google Drive by default, and improves it from real use afterwards. Use when the user asks to make, build, or sell an agent or plugin for a customer or a specific job (for example 「〇〇さん向けのエージェントを作って」「〇〇のサポートエージェントを作れ」), asks to resume building one, says something about a built agent is wrong (「ここが違う」), or asks to improve one (「改善して」).
 ---
 
 # 顧客専用のエージェントを仕立てる
@@ -32,6 +32,12 @@ description: Builds a Claude plugin (agent) tailored to one customer's job, from
 - [ ] 段階3 磨く              → references/3-improve.md を読んで進める
 - [ ] 段階4 合格確認と納品形  → references/4-check-and-package.md を読んで進める
 ```
+
+納品した後は、**段階5 使いながら磨く**（references/5-improve-in-use.md）。利用者が作ったエージェントについて
+「ここが違う」と言ったとき（A: 指摘を直せる粒度まで明確にして記録）と、「改善して」と頼んだとき（B: 直して測り直す）に行う。
+
+利用者の言葉があいまいなときは、どの段階でも、自分が直せる・作れる粒度（どの仕事の、どの出力が、どうなってほしいか）まで
+明確にしてから進める。推奨の答えを添えて1回2問までで聞く。
 
 各段階の終わりに、利用者へ「何ができたか／次に何をするか」を2行で伝え、そのまま次の段階へ進む。
 利用枠を使う操作（段階3の評価）の前だけは、一言知らせてから進める。
