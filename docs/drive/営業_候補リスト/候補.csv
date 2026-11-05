@@ -1,20 +1,20 @@
 順位,点数,店名,区,メール,メール掲載URL,メールの種類(一般/限定:用途),勧める商品,決め手の事実,出典URL,SEOの弱さ,MEOの弱さ,AIOの弱さ,気になる点,送信状態,配信停止
 1,95,珈琲豆のイヅツヤ,瑞穂区,shop@izutsuya-mame.com,https://www.izutsuya-mame.com/about/,一般,dbuilder,1950年創業、1999年に二代目店主（〇〇さん）が瑞穂区で自家焙煎専門店を開始。コーヒー教室と「カフェをはじめる」支援あり。店舗案内のURLが「iztsuya-mame.com」と綴り誤りでリンク切れ,https://www.izutsuya-mame.com/about/,店名検索で公式サイトが上位に出ず hamoni・食べログだけ。viewport なし（スマホ非対応）、表組み・画像ナビ、JSON-LD なし,営業時間が食い違う: 公式「10:00～17:00 月・火休」、豆ナビ「10:00～18:30 日・月・祝休」（https://mamenavi.info/aichi/izutsuya.html）。口コミ数は不明,瑞穂区の自然文検索で要約に店名と住所だけ出た,"新着情報は外部の FC2 ブログ
-［内訳 適合25/弱さ22/問題15/意欲13/直営10/連絡10］",未送信,
+［内訳 適合25/弱さ22/問題15/意欲13/直営10/連絡10］",予約済 2026-11-06 09:30,
 2,94,awai（コーヒーと菓子 awai）,西区,info@coffee-awai.jp,https://www.coffee-awai.jp/contact,一般,Localyzer,夫婦で営む自家焙煎の店。公式住所「西区城西4-12-4」に対し、hamoni（Google データ）は「西区天塚町1-108 UNEVEN HUB STORE内」のまま。業務用卸の相談も同じメールで受付,https://www.coffee-awai.jp/shop ／ https://hamoni.jp/shop/4Y69DcfUsXp42Tpg5y9j,「awai コーヒー 名古屋 西区」で公式サイトが上位9件に入らない。JSON-LD に LocalBusiness なし,住所が公式と Google データで食い違う（電話 052-523-8123 は一致）。口コミ数は不明,西区・自家焙煎の質問で名前は出たが「住所は確認できず」「UNEVEN HUB STORE内」と古い情報を返した,"お知らせが 2026.04 から更新なし。定休日は Instagram 頼み
-［内訳 適合24/弱さ25/問題15/意欲10/直営10/連絡10］",未送信,
+［内訳 適合24/弱さ25/問題15/意欲10/直営10/連絡10］",予約済 2026-11-06 09:30,
 3,92,Q.O.L.COFFEE 本店,中区（丸の内）,info@qolcoffee.com,https://qolcoffee.com/about/,一般,Localyzer,トップに「AMBESSA JAPAN 2026 優勝 大会豆プレゼントキャンペーン実施中」。営業時間が公式・coffee-labo・retty で3通り,https://qolcoffee.com/ ／ https://qolcoffee.com/about/ ／ https://coffee-labo.co.jp/nagoya-coffee-shop,「Q.O.L.COFFEE 名古屋」で公式サイトが上位9件に入らない。JSON-LD に LocalBusiness なし,営業時間が3通り（公式 火～金7:45～16:30・土日9:00～18:30・月休／coffee-labo 月～金7:45〜17:30・不定休／retty 昼夜）。口コミは不明,「名古屋 中区で自家焙煎のおいしいコーヒーが飲めるカフェはどこ？」の答えに出ない,"2店舗（本店とパルコの BREWERS）。代表者名は公開（〇〇さん）
-［内訳 適合23/弱さ24/問題14/意欲15/直営6/連絡10］",未送信,
+［内訳 適合23/弱さ24/問題14/意欲15/直営6/連絡10］",予約済 2026-11-06 09:30,
 4,91,ロジウラのマタハリ春光乍洩,中区（大須）,cafematahari@gmail.com,http://www.cafematahari.com/,一般,Localyzer,2026年7月20日で開業25周年。2022年11月5日に中村区椿町から大須へ移転。<title> が空,http://www.cafematahari.com/,「ロジウラのマタハリ 大須」で公式サイトが上位9件に入らない。<title> が空、JSON-LD なし,営業時間が公式 12:00~21:00 と mapple 12:00〜20:00 で食い違う。hamoni に電話番号なし（公式は 052-222-0588）。移転前の掲載が残る可能性（不明）,「大須 隠れ家 カフェ アジアン料理 おすすめ」の答えに出ない,"10月・11月のお知らせが無い
-［内訳 適合22/弱さ24/問題14/意欲14/直営7/連絡10］",未送信,
+［内訳 適合22/弱さ24/問題14/意欲14/直営7/連絡10］",予約済 2026-11-06 09:30,
 5,90,Cafe Toki（カフェトキ）,緑区（南大高）,cafetoki1120@gmail.com,https://cafe-toki.jp/,一般,Localyzer（次点 DX-TABLE）,公式サイトの同じページで、アクセス欄は「定休日 なし／月火 10:00〜」、フッターは「定休日 月曜・火曜／7:30〜」。ぐるなびは月火休み,https://cafe-toki.jp/,店名検索・「緑区 喫茶」とも公式サイトは出ず、ぐるなび・食べログ・hamoni だけ。構造化データは見えない,定休日・営業時間がページ内と媒体間でずれる。最寄り駅もぐるなび南大高駅／食べログ大高駅,「緑区 喫茶」の要約にスフレパンケーキの店として出た（強み）,"メールは全角の＠で掲載。テイクアウトは電話注文のみ（紙伝票の要否は不明）
-［内訳 適合22/弱さ21/問題15/意欲14/直営8/連絡10］",未送信,
+［内訳 適合22/弱さ21/問題15/意欲14/直営8/連絡10］",予約済 2026-11-06 09:30,
 6,88,coffee Kajita（コーヒーカジタ）,名東区（高社）,mail@coffeekajita.com,https://coffeekajita.com/info.html,一般,dbuilder,トップのお知らせが2020年の「11月5日（木）高島屋催事」のまま。viewport なし。DEAN & DELUCA 名駅・栄で豆を販売,https://coffeekajita.com/info.html ／ https://co-trip.jp/article/641150,店名検索・「名東区 喫茶」とも公式サイトは出ず NAVITIME・Retty・co-trip。title は店名だけ、JSON-LD なし,公式「喫茶は17:00まで」、NAVITIME 要約は18:00まで。営業日の表記が媒体ごとに違う,「名東区 喫茶」の要約に「週3日だけ営業する小さなカフェ」として出た（強み）,"2020年の告知がトップに残る
-［内訳 適合23/弱さ21/問題15/意欲9/直営10/連絡10］",未送信,
+［内訳 適合23/弱さ21/問題15/意欲9/直営10/連絡10］",予約済 2026-11-06 09:30,
 7,87,Miyata Coffee Roaster（宮田コーヒー）,千種区（堀割町）,info@miyatacoffee.com,https://www.miyatacoffee.com/,一般,Localyzer,2025年に営業届を出し、ブログで3種のブレンドを2025年7〜8月に続けて公開。サイトのどこにも住所・営業時間が無い,https://www.miyatacoffee.com/,店名で検索すると旧「宮田コーヒー」の tabelog と神戸の別の焙煎所が出て、自店サイトは出ない。地域語でも出ない,tabelog は旧喫茶の情報（14:00〜18:00 水〜金休）のままで、新サイトと NAP が一致しない。口コミ数は不明,出ない,"旧「宮田コーヒー」と同じ事業者かは ekiten のリンクだけが根拠（要確認）
-［内訳 適合21/弱さ23/問題13/意欲13/直営7/連絡10］",未送信,
+［内訳 適合21/弱さ23/問題13/意欲13/直営7/連絡10］",送らない（販売元が東京の会社。名古屋の店舗と確認できず）,
 7,87,cafe バビュー,東区（葵）,mail@cafebabyu.com,http://www.cafebabyu.com/access/,一般,dbuilder,WordPress 4.9・最終記事 2018年7月5日・https 未対応。savorjapan では住所が「名東区葵3-23-20」と誤っている。2人の女性で営む小さな喫茶,http://www.cafebabyu.com/access/ ／ https://autoreserve.com/en/restaurants/ZeN4KX622LfeHPdmrg7S,店名検索で savorjapan と hamoni が出て、自店サイトは出ない。meta description なし,savorjapan の区名が誤り。公式アクセスページの営業時間欄が空,出ない,"8年近く更新が止まっている（集客意欲は読み取りにくい）
-［内訳 適合25/弱さ24/問題15/意欲4/直営9/連絡10］",未送信,
+［内訳 適合25/弱さ24/問題15/意欲4/直営9/連絡10］",予約済 2026-11-06 09:30,
 9,86,JIMLAN COFFEE（ジムランコーヒー）,中川区（一色）,jimlancoffee@na.commufa.jp,https://www.jimlancoffee.com/?mode=sk,一般,dbuilder,店の紹介サイトが無く、通販のお知らせ4件が 2022/07/29「しばらくの間は月・火・水休み」で止まっている。hamoni の要約が別の店名「カフェ・バレンシア」,https://www.jimlancoffee.com/ ／ https://hamoni.jp/shop/XagKhYMlwxVwzIby4dsF,「ジムランコーヒー」で公式サイトが上位9件に入らない。JSON-LD なし,hamoni のサイト欄が公式ではなく食べログ、要約の店名が別の店。駐車場台数が4台・6台で食い違う,「名古屋 中川区で本格的なスペシャルティコーヒーが飲めるお店は？」で「中川区では見つからない」と答えた,"2022年の「しばらくの間」が4年近く残る
 ［内訳 適合23/弱さ25/問題15/意欲7/直営6/連絡10］",未送信,
 9,86,豆蔵（試飲のできるコーヒー豆専門店）,名東区（八前）,coffeemamezo@ybb.ne.jp,http://ikazo.main.jp/mamezo/contact.html,一般,dbuilder,店名で検索してもこの店が1件も出なかった。サイトは http のみ・viewport なし・©2015、制作者の個人ドメイン配下,http://ikazo.main.jp/mamezo/,店名検索で1件も出ない（なか卯などが出た）。JSON-LD なし,公式と豆ナビの定休日（水・木）は一致。ほかは不明,「名東区で自家焙煎…」の要約には出なかった（別の検索では豆ナビ経由で出た）,"お知らせは Facebook の埋め込み頼み。メールはプロバイダのドメイン
@@ -40,7 +40,7 @@
 20,79,BUCYO COFFEE（ブチョーコーヒー）,中村区（名駅南）,bucyoub51@gmail.com,https://bucyocoffee.com/about/,一般,dbuilder,名物の「小倉あん」と新作「きなこバター」が通販デビュー。サイトは viewport なし,https://bucyocoffee.com/,「BUCYO COFFEE 名古屋」で公式サイトが上位10件に入らない。JSON-LD なし,営業時間 7:15-17:00 と 7:30-16:30 が混在。旧名「BUCYO Coffee KAKO」の掲載が残る（mapple）,「名駅南 おすすめ 喫茶 モーニング 小倉トースト」の答えに出た（強み）,"KAKEI 社の運営（3店）で決める人は本店かもしれない
 ［内訳 適合22/弱さ18/問題12/意欲14/直営3/連絡10］",未送信,
 20,79,アルベロ,緑区,albero@mite.ne.jp,http://albero.mite.ne.jp/,限定:注文,dbuilder,古いホームページビルダー製でスマホ用 viewport なし。「ネットショップがトラブルの為使用が出来なくなりました」と掲載。2026.10.31 に更新あり,http://albero.mite.ne.jp/,調査記録なし（古いビルダー製・viewport なしのみ確認）,調査記録なし,調査記録なし,"メールは注文用の窓口
-［内訳 適合25/弱さ15/問題15/意欲12/直営6/連絡6］",未送信,
+［内訳 適合25/弱さ15/問題15/意欲12/直営6/連絡6］",予約済 2026-11-06 09:30,
 22,78,cafe DODO,中区（栄5丁目）,cafedodo2011@gmail.com,https://www.dodo-sakae.com/about,限定:ギャラリー展示の相談,Localyzer,"about に「2022年度の展示料金」（1週35,000円〜）が今も載る。WiFi・電源・ギャラリーがあるのに作業カフェの質問で出ない",https://www.dodo-sakae.com/about,「cafe DODO 栄」で公式サイトが上位10件に入らない（同名の別店が先）,営業時間が媒体ごとに違う（ekiten）。2015年のブログは「ビル3階」で場所が食い違う。ekiten 口コミ5件・3.67,「栄 矢場町 作業できるカフェ ギャラリー おすすめ」の答えに出ない,"展示料金が「2022年度」のまま
 ［内訳 適合21/弱さ22/問題12/意欲11/直営6/連絡6］",未送信,
 22,78,MARKS CAFE（マークスカフェ）,熱田区,info@markscafe.jp,https://markscafe.jp/お問い合わせ/,限定:求人,dbuilder（次点 Localyzer）,サイトに住所・営業時間がない。定休日が hamoni「月曜休」、公式求人・autoreserve「月・火休」で食い違う。犬と入れるテラス、48席,https://markscafe.jp/,店名検索で食べログ・autoreserve・hamoni が出て、公式サイトは上位にない。description・JSON-LD なし,定休日が食い違う,出ない,"メールは求人の欄だけに掲載。会社運営か個人店かは不明
@@ -64,7 +64,7 @@
 32,69,ごはんと雑貨 pokoj（ポコイ）,熱田区,popopokoj@gmail.com,http://pokoj.jp/about,一般,Localyzer,"昼夜の飲食と雑貨販売。meta description がキーワードの羅列（「名古屋,pokoj,雑貨,カフェ,その他」）",http://pokoj.jp/about,店名検索で hamoni と Retty が出て、公式サイトは上位にない。JSON-LD なし,住所・電話（052-265-6409）・営業時間・定休が公式と要約で一致,熱田区の検索文で出ない,"大きな問題は少ない
 ［内訳 適合20/弱さ15/問題7/意欲10/直営7/連絡10］",未送信,
 32,69,喫茶はじまり,北区（大曽根）,info@kissa-machidukuri.com,Facebook ページ（URL 未記録）,一般,Localyzer,お知らせが 2025.09 で止まっている。営業時間が 11:00 と 10:00 で食い違う,https://kissa-machidukuri.com/contact/,調査記録なし,営業時間が 11:00／10:00 で食い違う,調査記録なし,"メールは Facebook ページに掲載（サイトはフォーム https://kissa-machidukuri.com/contact/）。運営形態は不明
-［内訳 適合20/弱さ15/問題13/意欲6/直営5/連絡10］",未送信,
+［内訳 適合20/弱さ15/問題13/意欲6/直営5/連絡10］",予約済 2026-11-06 09:30,
 34,65,喫茶モーニング,中村区,kissamorning@gmail.com,https://kissamorning.com/,一般,Localyzer,ペライチの1ページサイト（Copyright 2019）で、アクセス欄に住所の文字が無い,https://kissamorning.com/,調査記録なし,サイトのアクセス欄に住所の文字が無い,調査記録なし,"—
 ［内訳 適合20/弱さ12/問題12/意欲5/直営6/連絡10］",未送信,
 35,64,papiton（パピトン）,千種区（山門町）,info@papiton3.com,https://papiton3.com/bdsweets/,限定:菓子のオーダー,Localyzer,2026年9月1日のお知らせ（10月から火曜と月1回の日曜だけ営業）と、ページ下の「定休日：水・木・金」が食い違う,https://papiton3.com/,「パピトン 覚王山」で検索しても出ない,営業日の表示が同じサイト内で食い違う,出ない,"営業を縮めている最中なので、集客の提案は控えめに

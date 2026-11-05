@@ -5,7 +5,7 @@
 - URL: https://docs.google.com/spreadsheets/d/1GyWxHj3gkglIOadfg5OkQrM-q8hKHsl3NlHanXaX2X0/edit
 - 目的: 名古屋の個人経営カフェ・喫茶への営業候補。kosehira-sales-outreach が使う
 - 正本: Drive（このフォルダの CSV は読み取り専用の写し。直すときは Drive 側を直す）
-- 最後にそろえた日: 2026-11-05
+- 最後にそろえた日: 2026-11-06（送信状態を更新）
 
 ## シートごとの行数（見出し行を除く）
 
