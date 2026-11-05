@@ -1,9 +1,12 @@
 {
   "name": "kosehira-class-assistant",
   "displayName": "授業アシスタント（小齊平）",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Classroom・Google Drive・スプレッドシート・フォーム・NotebookLM を使う授業の、教材づくり・提出と成績の管理・投稿と入力・生徒へのお知らせを手伝う。採点と送信は先生が確定する。",
-  "author": { "name": "rahiseko-alt", "url": "https://github.com/rahiseko-alt" },
+  "author": {
+    "name": "rahiseko-alt",
+    "url": "https://github.com/rahiseko-alt"
+  },
   "repository": "https://github.com/rahiseko-alt/Dev-agent-01",
   "license": "MIT",
   "icon": "./assets/icon.svg",
