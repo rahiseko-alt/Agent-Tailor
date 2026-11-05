@@ -1,7 +1,7 @@
 {
   "name": "agent-tailor",
   "displayName": "Agent Tailor（エージェント・テイラー）",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "顧客の仕事を聞き取り、公式の作り方で顧客に納品できるプラグイン（エージェント）を作り、出来を測り、申請前の検査に通して納品形にまとめる。",
   "author": {
     "name": "rahiseko-alt",
