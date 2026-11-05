@@ -1,0 +1,72 @@
+店名,区,連絡手段/フォームURL,勧める商品,メモ
+松島珈琲 MATSUSHIMA COFFEE,千種区（高見）,フォーム http://matucafe.com/index.php?お問い合わせ,dbuilder,PukiWiki 型の古いサイト、https 未対応。旧 group1 の点数 9/11
+R ART OF COFFEE,千種区（本山）,お問い合わせページ https://r-artofcoffee.jp/contact,Localyzer（優先度低）,AIO に名前が出る。Last-Modified 2025-02-12
+六識珈琲店,北区（芳野）,フォーム見つからず https://rokushiki-coffee.com/,dbuilder,サイトの日付は2022年6月が最後、description なし
+SUIDOMICHI coffee,千種区（今池）,フォーム・メールなし http://suidomichi-coffee.com/,—,2026年9月の更新あり
+Cafe & Kitchen Doolittle,千種区（覚王山）,フォーム・メールなし https://www.cafe-doolittle.com/,dbuilder,viewport なし（スマホ非対応）
+本山 de café ハルジ,千種区,メールなし http://www.haruji-motoyama.jp/,—,
+エールカフェ セントラルガーデン,千種区,メールなし https://aircafe-centralgarden.com/,—,
+Brew coffee roasters,千種区（池下）,メールなし https://www.brew-c-r.com/,—,通販サイトはボット対策で開けなかった
+覚王山カフェ Ji.Coo.,千種区,メールなし https://jicoo.owst.jp/,—,予約・グルメ系の作成ツールのサイト
+CAFE CAL SMILY DOGS,守山区,メールなし https://cafecalsmilydogs.owst.jp/,—,予約・グルメ系の作成ツールのサイト
+サイタカフェ,東区,FC2 ブログのメールフォーム http://saitacafe.blog.fc2.com/,dbuilder,
+マルヨシコーヒー,千種区,通販 https://maruyoshico.base.shop/,dbuilder,hamoni 掲載の旧ドメインが賭博スパムサイトになっている
+Morning Glory,北区,—,dbuilder,旧ドメインがインドネシアの賭博サイトに転送される
+くじらCAFE／カフェ パルコル／Natural style cafe 樹／LaLa,守山区・北区・東区,接続できない,—,ドメイン失効の可能性
+パンダコーヒーロースターズ／ふくろう珈琲焙煎所／星コーヒー店／藍風珈琲店／喫茶 青時雨／ブラックバードコーヒー／YOSUGA COFFEE／澤井コーヒー本店,北区・守山区・千種区・東区,Instagram のみ（429 で未確認）,—,
+喫茶クロカワ,中区（千代田）,フォーム http://cafekurokawa.com/contact.html,dbuilder,viewport なし・https なし。旧 group2 の点数 77
+chiffoncafe Favori,中川区（八田）,フォーム https://chiffon-favori.shop-pro.jp/customer/inquiries/new,Localyzer,店名の表記ゆれ、hamoni の住所に別店名。店主1人で営業
+MASA cafe,中村区（藤江町）,フォーム https://masacafe.nagoya/inquiry/,Localyzer,2026.03 に TV で紹介。英語の掲載で住所誤記
+テラスカフェ（TERRATH CAFE）,中区（平和）,フォーム https://terrathcafe.com/contact/,Localyzer,「テラス」と「TERRATH」の表記ゆれ
+CAFE GALLERY hagi,西区（宝地町）,フォーム http://hagi-shop.com/contact,Localyzer（優先度低）,同名の別店と検索でぶつかる
+喫茶七番,中区（錦）,フォーム https://kissa7ban.com/access.html,Localyzer（優先度低）,エリアマネジメント会社の運営
+yoake（和カフェレストラン）,西区（那古野）,フォーム https://yoake-cafe.com/inquiry/,Localyzer（優先度低）,構造化データまで整っている。会社運営
+喫茶ツヅキ,中村区,電話のみ https://kissatuzuki0.wixsite.com/kissatuzuki/contact_us,dbuilder,Wix 無料版でテンプレート文「© 2014 by The Diner」が残る
+珈琲だけの店 びぎん,中区（栄）,サイトが開かない（biggin.sakura.ne.jp）,dbuilder,hamoni はまだこの URL を掲載
+PGcafe,中区（大須）,予約のみ https://pgcafe.nagoya/reservation,—,
+Cafe Kinari,中区（大須）,フォームなし https://cafekinari.com/,—,©2021、営業時間は Twitter 頼み
+スコーグカッフェ,中川区（八熊）,フォーム・メールなし https://skogkaffe.com/,dbuilder,サイトの最新は 2020-04
+紗莉庵,中川区（露橋）,電話と Instagram のみ https://www.sarian-nagoya.com/,—,
+CAFE G.A.,中川区,http://cafe-ga.jp/,dbuilder,日付は 2021 年まで
+喫茶ミトン,中区（新栄）,https://kissamitten.com/,—,日付は 2022 年まで
+チーズカフェアルピンヌ,中区（丸の内）,https://cheesecafe-alpine.xyz/,dbuilder,viewport なし、2021 年まで
+カフェ・シャトンルージュ,中区（丸の内）,https://chaton-rouge.net/,dbuilder,title が「Welcome to my HomePage」、viewport なし
+THE RISCO,中区,http://therisco.com/,—,2022 年まで
+Dublinroom,中村区（名駅）,https://dublinroom.wordpress.com/,—,
+リトルトリー（コーヒーと本とレコードの店）,西区,https://littletree2019.stores.jp/,—,captcha で読めなかった
+長靴と猫／yama coffee／Motion.,中区ほか,開けなかった（403・名前解決不可）,—,
+LMS coffee／PORT COFFEE／cafe MARU／いこい珈琲／喫茶ゾウメシ／cafe3tempo／cafe 蕾／喫茶リブロン／deux pins／キティ珈琲店／コーヒーハウスかこ 花車本店,中区・西区・中川区・中村区,SNS のみ（未確認）,—,
+喫茶スーズ焙煎所,南区（桜台）,フォーム https://suuscoffee.com/%e3%81%8a%e5%95%8f%e3%81%84%e5%90%88%e3%82%8f%e3%81%9b/,Localyzer,2019年から子ども食堂。旧 group3 の点数 74
+なつめコーヒー,瑞穂区,フォーム https://natsumecoffee.jimdofree.com/access-contact/,Localyzer,hamoni が載せる旧 URL が接続できない
+Café Verrine,昭和区,ホットペッパー予約 https://www.hotpepper.jp/strJ001114116/yoyaku/ と LINE・電話,Localyzer（次点 DX-TABLE）,電話番号が公式と他媒体で食い違う
+珈琲物語,港区,X のみ確認,dbuilder,公式ドメインがインドネシアのニュースサイトへ転送
+KIMURA CAFE,昭和区,電話のみ,dbuilder,お知らせが 2020.6.11 で止まっている
++Sugar,南区,連絡先不明 https://cafe-plus-sugar.com/,dbuilder,中身は表題「＋Suger」だけ
+吉岡コーヒー,瑞穂区,電話・FAX のみ,Localyzer,古い営業時間の情報が外に残る。AIO には出る
+gallery cafe Lalka,昭和区,個室貸切の予約フォーム https://cafe-lalka.com/reserved_form/,Localyzer,
+I-Cafe,昭和区,電話のみ,dbuilder,ホームページ改装中の表示
+BERING PLANT,熱田区,メール・フォームなし https://bering-plant.jp/,—,ブログは 2025-02-11 で停止
+Luck cafe／Zenya Cafe／シークカフェ／ふるーつ果ふぇ／ザ・グローブ,昭和区・南区・港区ほか,公式ドメインが名前解決できず,—,失効か環境の制限か要確認
+space／haru.／Valluga／cafe 1992／KISO／VOLONT／シシリアン／葡瑠梵／coffee 知紗／タイガーカフェ／ティーザー呼続店／SUNS COFFEE STAND／木ノ実／春カフェ／cafe masao／CAFEdeOSU,熱田区ほか（group3 の5区）,Instagram／Facebook のみ（未確認）,—,
+エスニークス（サンドイッチ専門カフェ）,天白区（植田）,フォーム https://www.snycs.jp/contact,dbuilder,info@snycs.jp は HTML コメント内で画面に出ていないため不採用。「2017 ホームページ準備中」が残る
+aoiku_cafe,名東区（野間町）,フォーム https://www.aoikucafe.com/contact/index.html,dbuilder,viewport なし
+Le Marge,緑区（太子）,フォーム https://le-marge.com/contact,Localyzer,オンラインショップが「準備中」のまま
+ベーカリーカフェ ラルジュ（Large Cafe）,天白区（島田）,フォーム http://large-cafe.com/bakery_large/contact_shimada.html,Localyzer,2店舗（瑞穂区 石川橋店あり）。席・メニューの予約はメール不可
+風香,名東区（高社）,メールなし,dbuilder,旧ドメインが埼玉の美容室のサイトになっている
+BENCH COFFEE STAND,天白区（平針）,X/Instagram（未確認）,dbuilder,旧ドメインがカジノ広告サイト
+カフェ スピコ／STARR CURRY AND CAFE,緑区・名東区,サイトが名前解決できない,dbuilder,
+寄鷺館,天白区（島田）,ページ消失,dbuilder,1975年からの自家焙煎喫茶
+徳重珈琲,緑区（鶴が沢）,サイトが名前解決できない,—,豆ナビの電話番号が六古窯鳴海店と同じ
+café SabuHiro,名東区（一社）,business.site が 404,Localyzer／dbuilder,
+珈門,天白区,商工会議所 HP サービスが 503,—,
+キリン珈琲,名東区（山香町）,電話のみ https://kirincoffee.jimdofree.com/お問合わせ/,dbuilder,viewport なし、©2012
+カフェリリアン,緑区（鶴が沢）,メールなし https://cafelillian.theshop.jp/law,dbuilder,©2014 の Jimdo
+Lakewood／cafe WONDER,天白区（元植田）,電話のみ https://lakewood.nagoya/inquiry,—,
+Cafe and Bar City-Marine,天白区（原）,食べログ予約のみ,—,
+KAMINOKURA 436 TERRACE,緑区（神の倉）,メール・フォームなし http://436terrace.com/sp/,dbuilder,お知らせが 2019 年
+リグノーサカフェ,緑区（熊の前）,メール・フォームなし http://lignosa.com/sp/,—,
+キッサ マシマロ,天白区（平針）,電話のみ http://kissamasimaro.com/about,—,
+珈琲専家すぎうら,緑区（姥子山）,メールなし http://coffeesugiura.jp/,dbuilder,文字化けしたタイトルの古いページ
+かみのき珈琲店,名東区（香流）,アメーバブログのみ https://ameblo.jp/kaminoki3939/,dbuilder,
+サイアンスコーヒー／サントス,緑区・天白区,サイトにつながらず,—,未確認
+とよのcoffee／モユルリ珈琲店／.N coffee roasters／DEER BRAND coffee／FREAK COFFEE ROASTERS／8787cafe／Epic coffee／SUNNY DAY ほか,名東区・天白区・緑区,Instagram のみ（未確認）,dbuilder,
