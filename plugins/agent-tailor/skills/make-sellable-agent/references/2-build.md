@@ -10,7 +10,12 @@
    plugin-dev が入っていない（クラウド上の会話など）ときは、止まらずに公式の置き場所から同じ手順書を読む:
    `https://raw.githubusercontent.com/anthropics/claude-plugins-official/main/plugins/plugin-dev/skills/<plugin-structure|skill-development|mcp-integration>/SKILL.md`
    （利用者のパソコンでは `/plugin install plugin-dev@claude-plugins-official` で入れておくと速い）
-2. `tailor/<…>/<プラグイン名>/` に次を作る:
+2. 既存の部品を探す（作る前に必ず行う）: spec.md の仕事を「探す・調べる・作る・送る・記録する」などの機能に分け、機能ごとに次の順で探す。
+   1. 公式のプラグイン・接続口（https://github.com/anthropics/claude-plugins-official 、https://github.com/anthropics/skills 、使うサービスの公式 MCP）
+   2. MIT ライセンスの OSS とプラグイン（GitHub は `gh api -X GET search/repositories -f q='<機能の言葉>'`、npm、PyPI）
+   ライセンスは LICENSE ファイルか置き場所の表示（license.spdx_id）で確かめる。最終更新日・鍵や有料契約の要否も見る。
+   spec.md に「## 使う部品」を足し、機能ごとに「名前／URL／ライセンス／どうつなぐか（接続口・コマンド・部品）／採否と理由」を書く。どれも合わない機能だけを自作し、理由を1行で書く。
+3. `tailor/<…>/<プラグイン名>/` に次を作る:
    - `.claude-plugin/plugin.json`: `name`・`displayName`・`version`（`0.1.0`）・`description`・`author`・`license`（`MIT`）・`privacyPolicyUrl`（spec.md の「プライバシーポリシーの URL」）・`repository`
    - `.mcp.json`: **必ず** Google Drive の公式の接続を入れる（Anthropic 公式プラグインと同じ書き方）。ほかの道具も `https://` URL だけを書く。鍵は書かない。
      `.mcp.json` の書き込みを止められた場合は、同じ中身を plugin.json の `mcpServers` に書いてよい
@@ -25,5 +30,5 @@
    - `PRIVACY.md`: 自分では何も集めず送らないこと、Google Drive を読むこと（Google のプライバシーポリシー https://policies.google.com/privacy ）を書く
    - `LICENSE`: MIT の全文
    - `assets/icon.svg`: 簡単な図形の SVG
-3. `claude plugin validate <プラグインのフォルダ>` を流し、エラーが無くなるまで直す。
-4. progress.md に段階2の完了を書く。
+4. `claude plugin validate <プラグインのフォルダ>` を流し、エラーが無くなるまで直す。
+5. progress.md に段階2の完了を書く。
