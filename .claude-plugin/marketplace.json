@@ -21,12 +21,20 @@
     },
     {
       "name": "kaiho-visit-followup",
-      "source": "./plugins/kaiho-visit-followup",
+      "source": {
+        "source": "git-subdir",
+        "url": "rahiseko-alt/kaiho-visit-followup",
+        "path": "plugins/kaiho-visit-followup"
+      },
       "description": "海鵬学園 AIビジネス専門学校の高校訪問担当向け。訪問メモから上司向け報告書と先生宛てお礼メールの下書きを作る"
     },
     {
       "name": "kosehira-class-assistant",
-      "source": "./plugins/kosehira-class-assistant",
+      "source": {
+        "source": "git-subdir",
+        "url": "rahiseko-alt/kosehira-class-assistant",
+        "path": "plugins/kosehira-class-assistant"
+      },
       "description": "小齊平先生の授業アシスタント。教材づくり・提出と成績・Classroom/フォーム/NotebookLM への投稿と入力・生徒へのお知らせ"
     }
   ]
