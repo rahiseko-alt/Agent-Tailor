@@ -36,6 +36,15 @@
         "path": "plugins/kosehira-class-assistant"
       },
       "description": "小齊平先生の授業アシスタント。教材づくり・提出と成績・Classroom/フォーム/NotebookLM への投稿と入力・生徒へのお知らせ"
+    },
+    {
+      "name": "kosehira-textbook-maker",
+      "source": {
+        "source": "git-subdir",
+        "url": "rahiseko-alt/textbook-studio",
+        "path": "plugins/kosehira-textbook-maker"
+      },
+      "description": "複数の参照教材と公開の基準から、オリジナルの教科書とシラバスを1単元ずつ作る。事実確認と類似確認は独立した監視役が行う"
     }
   ]
 }
