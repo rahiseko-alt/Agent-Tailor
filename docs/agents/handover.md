@@ -15,7 +15,7 @@
 - 試しで2単元以上に出た指摘を決まり8件にし、本体の references/rules-from-trials.md に入れた
 - 表紙は自分でデザインしない。素材と指示書・配置表どおりに組む。素材が無ければ依頼書（references/cover-brief-template.md）を書く（references/cover.md）
 - 改善記録は Drive ではなく、エージェントのリポジトリの docs/agent/改善記録/ に置く（textbook-studio #7・#8、プライバシーポリシーも直した Agent-Tailor #17）
-- 教科書の仕事（試しを含む開発）はこの Agent-Tailor の会話で行ってよい。成果物は textbook-studio に置く
+- 置き場所の分け方: 教科書を実際に作る仕事は textbook-studio で会話を始めて行う。エージェント本体を直す・試す開発は Agent-Tailor の会話で行い、本体と成果物は textbook-studio に置く
 
 **次にやること**
 
