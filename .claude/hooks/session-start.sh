@@ -1,36 +1,19 @@
 #!/bin/sh
-# 会話開始時に自動で読み込まれる内容。
-#   1. 進め方と説明のルール      docs/agents/flow-map.md
-#   2. 引き継ぎメモの直近 SHOW 件 docs/agents/handover.md
-# 読み込む件数と保存上限の正はこのファイル。文書側に数字を重複させない。
+# 会話開始時に自動で動く仕組み。
+# 進め方（flow-map.md）と引き継ぎメモ（handover.md）は、AGENTS.md の公式の読み込み（@）で毎回読まれる。
+# ここでは、ひな型の複製の片づけと、引き継ぎメモが上限を超えたときの警告だけを行う。
+# 保存の上限の正は handover-trim.sh の KEEP。
 set -u
-
-KEEP=5   # handover.md に残す上限
-SHOW=2   # 会話開始時に読み込む件数
 
 dir="${CLAUDE_PROJECT_DIR:-.}"
 
 # 複製先なら、写ってきたひな型の作業日誌を先に片づける（ひな型そのものでは何もしない）
 [ -f "$dir/.claude/hooks/template-cleanup.sh" ] && sh "$dir/.claude/hooks/template-cleanup.sh"
 
-[ -f "$dir/docs/agents/flow-map.md" ] && cat "$dir/docs/agents/flow-map.md"
-
 f="$dir/docs/agents/handover.md"
 [ -f "$f" ] || exit 0
-
-# ``` で囲まれた中の "## " は見出しとして数えない
+keep=$(sed -n 's/^KEEP=\([0-9]*\).*/\1/p' "$dir/.claude/hooks/handover-trim.sh" | head -1)
 total=$(awk '/^```/{fence=!fence; next} !fence && /^## /{n++} END{print n+0}' "$f")
-
-echo
-echo "--- 引き継ぎメモ 直近 $SHOW 件 / 全 $total 件（全文は docs/agents/handover.md）---"
-awk -v show="$SHOW" '
-  /^```/            { fence = !fence }
-  !fence && /^## /  { n++; started = 1 }
-  n > show          { exit }
-  started           { print }
-' "$f"
-
-if [ "$total" -gt "$KEEP" ]; then
-  echo
-  echo "⚠ 引き継ぎメモが $total 件あります（上限 $KEEP 件）。古い分を削ってください: sh .claude/hooks/handover-trim.sh"
+if [ -n "$keep" ] && [ "$total" -gt "$keep" ]; then
+  echo "⚠ 引き継ぎメモが $total 件あります（上限 $keep 件）。古い分を移してください: sh .claude/hooks/handover-trim.sh"
 fi

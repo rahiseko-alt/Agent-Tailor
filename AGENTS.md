@@ -12,7 +12,7 @@ Issues and specs live as GitHub issues in this repo, via the `gh` CLI. See `docs
 
 Single-context: `CONTEXT.md` at the repo root, ADRs in `docs/adr/`. Both are created lazily by `domain-modeling`. See `docs/agents/domain.md`.
 
-While working on the template itself (`.template/` exists), the template's own glossary and ADRs live in `.template/CONTEXT.md` and `.template/docs/adr/` instead, so they are not copied into new projects (`.template/` is removed in a copy on its first session). Read and enforce them exactly as you would the root ones.
+While working on the template itself, see `.claude/rules/template.md` (loaded only when `.template/` files are touched).
 
 ## Navigation (repo-local)
 
@@ -27,11 +27,12 @@ This repo may be driven by a non-engineer. Never assume the user knows which sla
 
 - **Agent Tailor is available in every session of this repo** through `.claude/skills/make-sellable-agent` (a link to `plugins/agent-tailor/skills/make-sellable-agent`, the single source). When the user asks to make an agent for a customer or a job (e.g. 「〇〇のエージェントを作って」), use that skill. Cloud sessions do not load plugins enabled in `.claude/settings.json`, which is why it is linked as a repo skill instead.
 - The `next-step` skill (`.claude/skills/next-step/`, repo-local, not from mattpocock/skills) diagnoses where the work currently stands and proposes exactly one command to run next.
-- A `SessionStart` hook in `.claude/settings.json` loads `docs/agents/flow-map.md` into context at the start of every session.
+- `docs/agents/flow-map.md` and `docs/agents/handover.md` are loaded into every session by the official `@path` import at the end of this file (see https://code.claude.com/docs/en/memory). `CLAUDE.md` imports this file for sessions that read only `CLAUDE.md`. The `SessionStart` hook only cleans up template copies and warns when the handover is over its limit.
 - Before writing implementation code for a request that has not been through the flow, run `next-step` first. Skip it only if the user explicitly says to go straight to code.
 - Session ceremonies: `s` reports where the last session left off (run it at the top of the first reply of every session, unprompted); `f` drives the repo to a state where the container can be destroyed safely and then declares, with evidence, whether it is safe to close. Both are repo-local skills, triggered by the bare letter or the slash command.
 - Never schedule timed check-ins on yourself (`send_later`, `create_trigger`, `/loop`, `ScheduleWakeup` or similar), including the default "safety-net check-in" after opening a PR. Watch PRs only through event delivery (`subscribe_pr_activity`). The only exception is a check-in the user explicitly asks for in the moment.
-- `docs/agents/handover.md` carries state across sessions: the container is ephemeral, so anything not written there is lost. Append a new entry at the top when work is shipped or a direction is agreed, run `.claude/hooks/handover-trim.sh`, and commit it immediately. `.claude/hooks/session-start.sh` owns the retention and read-window numbers; don't restate them elsewhere.
+- `docs/agents/handover.md` carries state across sessions: the container is ephemeral, so anything not written there is lost. Append a new entry at the top when work is shipped or a direction is agreed, run `.claude/hooks/handover-trim.sh`, and commit it immediately. A new session reads the handover from the default branch, so `f` always lands the handover on `main` (user's decision, 2026-11-15). `.claude/hooks/handover-trim.sh` owns the retention number; don't restate it elsewhere.
+- **Every agent repository Agent Tailor builds gets the same memory mechanism**: `CLAUDE.md` (`@AGENTS.md`), an `AGENTS.md` that imports `docs/agent/handover.md`, and the `s` / `f` skills. Templates are in `plugins/agent-tailor/skills/make-sellable-agent/assets/agent-repo/` (user's decision, 2026-11-15).
 
 ## Development flow
 
@@ -56,3 +57,8 @@ records nothing.
 `/improve-codebase-architecture` -> pick a candidate -> `/grill-with-docs` or `/codebase-design` -> `/to-spec` -> `/to-tickets` -> `/implement`
 
 `/improve-codebase-architecture` is a survey: it explores the codebase and hands back candidates. It never rewrites code on its own. Only the candidate the user picks goes through the flow above.
+
+## Loaded every session (official imports)
+
+@docs/agents/flow-map.md
+@docs/agents/handover.md

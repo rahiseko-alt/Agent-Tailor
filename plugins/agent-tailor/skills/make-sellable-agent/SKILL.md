@@ -57,4 +57,8 @@ sh ${CLAUDE_SKILL_DIR}/scripts/check-extra.sh <プラグインのフォルダ>
 - 最上位に `bin/` を作らない（claude.ai と Cowork で入らなくなる）。
 - 作るエージェントは**すべて、標準で利用者の Google Drive につなぐ**（利用者の決まり）。Agent Tailor 自身は、利用者が指定したフォルダ・ファイルだけを読む。勝手に Drive を検索しない（利用者の決まり、2026-11-10）。
 - 道具は**公式の接続口（MCP）を先に使い、無いときだけ画面操作**（Claude in Chrome、デスクトップの computer use）で行う（利用者の決まり。Anthropic の案内と同じ順番）。画面操作でも、送信・確定・削除・共有など取り消せない操作の前は、必ず利用者に確かめる。
+- 作ったエージェントの置き場所（そのエージェント専用の非公開のリポジトリ）には、**必ず引き継ぎの仕組みを入れる**（利用者の決まり、2026-11-15）。
+  `${CLAUDE_SKILL_DIR}/assets/agent-repo/` の中身（`CLAUDE.md`・`AGENTS.md`・`docs/agent/handover.md`・`.claude/hooks/handover-trim.sh`・`.claude/skills/s`・`.claude/skills/f`）を、
+  そのリポジトリの最上位へ写し、〔エージェント名〕を書きかえる。既にある `AGENTS.md`・`CLAUDE.md` は上書きせず、足りない行だけを足す。
+  会話の始めに引き継ぎメモを読む仕組みは公式の読み込み（`@docs/agent/handover.md`）で行い、自作のフックで読み込まない。
 - 顧客の Drive の資料の本文は、作るプラグインに写さない。プラグインは使うたびに Drive から読む。評価の入力に要る分だけ抜き出し、個人名・連絡先は伏せる。
