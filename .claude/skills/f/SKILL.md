@@ -1,6 +1,6 @@
 ---
 name: f
-description: セッション終了の儀式。この作業環境を破棄しても一切問題ない状態まで、保存・送信・引き継ぎメモの記録を完了させ、確認項目とともに終了可否を報告する。利用者が「f」「F」「/f」と送ったときに必ず使う。
+description: セッション終了の儀式。この作業環境を破棄しても一切問題ない状態まで、保存・送信・引き継ぎメモの記録と本番の版への反映を完了させ、確認項目とともに終了可否を報告する。利用者が「f」「F」「/f」「終了」「おわり」「終わり」と送ったときに必ず使う。
 ---
 
 # f — セッション終了の儀式
@@ -15,7 +15,7 @@ description: セッション終了の儀式。この作業環境を破棄して�
 起動する場面と、一文字が別の意味に見えるときの扱いは
 `docs/agents/flow-map.md`「セッションの開始と終了」が正。ここでは繰り返さない。
 
-## 確認する4項目
+## 確認する5項目
 
 上から順に片づける。**満たしていなければ、まず自分で満たしにいく。報告だけして終わらない。**
 
@@ -47,7 +47,30 @@ git rev-parse --verify --quiet "refs/remotes/origin/$b" >/dev/null \
 なっていなければ、`docs/agents/flow-map.md`「引き継ぎメモ」の手順どおりに1件追記する
 （書式・整理・コミット・1行報告まで、あの節が正）。
 
-### 4. 提出中の変更の状態を明示
+### 4. 引き継ぎメモが本番の版（main）に入っている
+
+次の会話は、本番の版の `docs/agents/handover.md` を読む（AGENTS.md の公式の読み込み）。
+作業の枝にだけあるメモは、次の会話に届かない。**メモを本番の版まで入れる**（2026-11-15 利用者の決定。マージの確認は要らない）。
+
+```sh
+git fetch origin main
+git diff --quiet origin/main HEAD -- docs/agents/handover.md docs/agents/handover-archive.md && echo 反映済み
+```
+
+「反映済み」と出なければ、メモだけを本番の版に入れる。作業の枝のほかの変更は混ぜない:
+
+```sh
+b=$(git rev-parse --abbrev-ref HEAD)
+git switch -c "handover-$(date +%Y%m%d-%H%M)" origin/main
+git checkout "$b" -- docs/agents/handover.md docs/agents/handover-archive.md
+git commit -m "引き継ぎメモ"
+git push -u origin HEAD
+```
+
+続けて、その枝の PR を作って本番に取り込み（GitHub の MCP ツール）、元の枝に戻る（`git switch "$b"`）。
+取り込めなかったときは「終了できません」とし、理由を書く。
+
+### 5. 提出中の変更の状態を明示
 
 開いている提出物（PR）があるかを `docs/agents/issue-tracker.md` の手順で調べる。
 `gh` が無い環境では GitHub の MCP ツールを使う（対応表は同ファイルの冒頭）。
@@ -88,7 +111,7 @@ git rev-parse --verify --quiet "refs/remotes/origin/$b" >/dev/null \
 > 確認した項目:
 > - 手元の未保存の変更: なし
 > - 未送信の記録: なし
-> - 引き継ぎメモ: 今回の内容を記録済み
+> - 引き継ぎメモ: 今回の内容を記録済み・本番の版に反映済み
 > - 提出中の変更: なし（または「#12 が提出中のまま残っています」）
 >
 > 次回は「s」と打てば、続きから再開できます。

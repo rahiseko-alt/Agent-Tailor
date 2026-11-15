@@ -3,7 +3,7 @@
 # 溢れた分は削除せず、docs/agents/handover-archive.md（読み込み対象外）へ移す。
 set -u
 
-KEEP=5
+KEEP=3
 
 dir="${CLAUDE_PROJECT_DIR:-.}"
 f="$dir/docs/agents/handover.md"
